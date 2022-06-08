@@ -1,0 +1,25 @@
+application:
+  # 每隔多久检查同步一次,单位分钟
+  interval: 15
+auth:
+  # dnspod账户的token
+  token: dnspod-token
+  # dnspod账户的授权id
+  id: dnspod-id
+log:
+  # 日志输出级别
+  level: info
+domains: # 要解析的域名列表
+  - domain: example.com # 要解析的域名
+    # 要添加的域名记录
+    records:
+      - name: sub1 # 域名记录的名称,sub1.example.com
+        value: local ipv6 # 记录的值,若为local ipv6,则自动探测机器的公网ipv6地址
+        type: AAAA # 记录类型
+        ttl: 600 # ttl值,单位秒
+        enabled: 1 # 是否生效
+      - name: @
+        value: 192.168.18.223
+        type: A
+        ttl: 600
+        enabled: 1
